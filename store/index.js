@@ -73,18 +73,18 @@ export const state = () => ({
                 organizer:"Its me Maerd",
                 certificate:"Yes",
                 food:"Yes",
-                signer:"12",
-                maxsigner:"50",
+                signer:0,
+                maxsigner:50,
                 detail:"eiei",
-                date:"Date: Mon, 25 May",
-                time:'Time: 9.00 - 12-00',
+                date:"Mon, 25 May",
+                time:'9.00 - 12-00',
               },
               {
                 id: 2,
                 title: "Event name test 02",
                 organizer:"Its me Maerd",
-                certificate:"Certificate: Yes",
-                food:"Food: Yes",
+                certificate:"Yes",
+                food:"Yes",
                 signer:"20",
                 maxsigner:"40",
                 detail:"eiei",
@@ -95,7 +95,7 @@ export const state = () => ({
                 id: 3,
                 title: "Event name test 03",
                 organizer:"Its me Maerd",
-                certificate:" Yes",
+                certificate:"Yes",
                 food:"Yes",
                 signer:"32",
                 maxsigner:"60",
@@ -107,7 +107,7 @@ export const state = () => ({
           },
           {
             month: "Mar 2022",
-            sessions: [
+            sessions:[
               {
                 id: 4,
                 title: "Event name test 04",

@@ -48,7 +48,7 @@
                             </div>
                         </v-card> -->
                         <eventdetail
-                        v-for="item in list.sessions"
+                        v-for="item in list"
                         :session="item"
                         :key="item.id"/>
 
@@ -91,8 +91,10 @@ export default {
     }
   },
   mounted(){
-    // api 
-    this.list = this.event[0]
+    // api
+    // this.list = this.event[0]
+    this.list = this.event[0].sessions.filter((e) => e.id == this.$route.query.id)
+
   },methods: {
     select(){
       this.$router.push('/event/event-detail')

@@ -11,32 +11,35 @@
                         </v-img>
                         <div class="card-content">
                             <div>
+                                
                                 <v-card-title class ="pb-0">
                                     {{session.title}}
                                 </v-card-title>
                                     <v-card-text class="text--primary">
                                     {{session.organizer}}
+                                    
                                     </v-card-text>
                             </div>
                             </div>
                             <div class="card-content2">
-                                <p class="event-des ">{{session.date}}</p>
-                                <p class="event-des mb-3">{{session.time}}</p>
+                                <p class="event-des ">Date: {{session.date}}</p>
+                                <p class="event-des mb-3">Time: {{session.time}}</p>
                                 <p class="event-des mb-3">
                                     {{session.detail}}                          
                                 </p>
                                 <p class="event-des">
 
                                 </p>
-                                <p class="event-des mb-3">{{session.signer}}/{{session.maxsigner}}</p>
-                                <p class="event-des ">Food: Yes</p>
-                                <p class="event-des mb-3">Certificate: Yes</p>
+                                <p class="event-des mb-3">Signer: {{session.signer}}/{{session.maxsigner}}</p>
+                                <p class="event-des ">Food: {{session.food}}</p>
+                                <p class="event-des mb-3">Certificate: {{session.certificate}}</p>
 
                               
                             </div>
                         </v-card>
 </template>
 <script>
+// console.log(this.$route.query.id)
 export default {
     props: ['session'],
 }

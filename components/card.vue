@@ -27,13 +27,13 @@
                     class="iconeiei"
                     tile
                 >
-                    <v-icon class="icon_check">
+                    <v-icon :color="(session.certificate == 'Yes')? '#83C4F3' : '#EAEAEA' ">
                         mdi-certificate-outline
                     </v-icon>
-                    <v-icon class="{updatedicon: food}" >
+                    <v-icon :color="(session.food == 'Yes')? '#83C4F3' : '#EAEAEA' ">
                         mdi-food
                     </v-icon>
-                    <v-icon class="icon_check">
+                    <v-icon :color="(session.signer > 0)? '#83C4F3' : '#EAEAEA' ">
                         mdi-account
                     </v-icon>
                     <span class="subheading">{{session.signer}}/{{session.maxsigner}}</span>
@@ -46,12 +46,12 @@ export default {
     props: ['session'],
     methods: {
         select(){
-        this.$router.push('/event/event-detail')
+            this.$router.push('/event/event-detail?id=' + this.session.id)
         },
         food(){
-           if (this.session.food == true){
-               return "color: #83C4F3;"
-           }
+           if (this.session.food == "Yes"){
+               return "color:#83C4F3;"
+           }else return "color:black;"
 
         }
 

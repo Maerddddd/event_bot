@@ -44,7 +44,7 @@ export default {
     }
   },
   mounted(){
-    // api 
+    // api
     this.list = this.event[0]
   },
   methods: {
