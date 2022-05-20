@@ -3,60 +3,71 @@
     <v-card
         class="mx-auto"
         max-width="400"
-        @click="select"
         >
         <v-img
             class="white--text align-end"
             height="200px"
             :src="session.img"
             >
-            <!-- <div class="view-detail">View Detail</div> -->
         </v-img>
         <div class="card-content">
             <div>
+                
                 <v-card-title class ="pb-0">
                     {{session.title}}
                 </v-card-title>
                     <v-card-text class="text--primary">
                     {{session.organizer}}
+                    
                     </v-card-text>
             </div>
-                <v-card
-                    v-for="n in 1"
-                    :key="n"
-                    :class="n === 1 && 'mt-auto'"
-                    class="iconeiei"
-                    tile
-                >
-                    <v-icon :color="(session.certificate == 'Yes')? '#83C4F3' : '#EAEAEA' ">
-                        mdi-certificate-outline
-                    </v-icon>
-                    <v-icon :color="(session.food == 'Yes')? '#83C4F3' : '#EAEAEA' ">
-                        mdi-food
-                    </v-icon>
-                    <v-icon :color="(session.signer > 0)? '#83C4F3' : '#EAEAEA' ">
-                        mdi-account
-                    </v-icon>
-                    <span class="subheading">{{session.signer}}/{{session.maxsigner}}</span>
-                </v-card>             
             </div>
+            <div class="card-content2">
+                <p class="event-des ">Date: {{session.date}}</p>
+                <p class="event-des mb-3">Time: {{session.time}}</p>
+                <p class="event-des mb-3">
+                    {{session.detail}}                          
+                </p>
+                <p class="event-des">
+
+                </p>
+                <p class="event-des mb-3">Signer: {{session.signer}}/{{session.maxsigner}}</p>
+                <p class="event-des ">Food: {{session.food}}</p>
+                <p class="event-des mb-3">Certificate: {{session.certificate}}</p>
+
+            </div>
+            
         </v-card>
-    </v-container>
+        <v-btn
+            end
+            large
+            color="primary"
+            class ="w-100 mt-2 " @click="signup">
+            Sign up
+        </v-btn>
+        </v-container>
+
+
+                        
 </template>
 <script>
+// console.log(this.$route.query.id)
 export default {
-    props: ['session','month'],
+    props: ['session'],
     methods: {
-        select(){
-            this.$router.push('/event/event-detail?id=' + this.session.id)
+        signup(){
+        //   this.$router.push('/event/event-detail')
+        this.$axios.patch(`https://event-bot-628b6-default-rtdb.firebaseio.com/events/${this.$store.getters.getLine.userId}.json`, {eventId: this.session.id}).then((res) => {
+        this.$router.push('/event/done')
+            })
         },
   }
+    
 }
 </script>
+
 <style lang="scss" scoped>
-    .updatedColor{
-        color:#83C4F3;
-    }
+
     .v-card__title{
         font-size: 16px;
         color:#314F64;
@@ -100,4 +111,18 @@ export default {
     .v-card+.v-card{
         margin-top: 10px;
     }
+    .card-content2{
+        padding:  0px 15px ;
+        padding-bottom: 15px !important;
+        
+    }
+    .event-des{
+        font-size: 14px !important;
+        color:#314F64;
+        margin: 0px;
+    }
+
+    
+    
+
 </style>

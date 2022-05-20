@@ -1,4 +1,9 @@
 export const state = () => ({
+  line: {
+    pictureUrl: null,
+    displayName: null,
+    userId: null
+  },
     dialog:{
         isShow:false,
         title:'',
@@ -65,80 +70,90 @@ export const state = () => ({
         // ],
         event: [
           {
-            month: "May 2022",
+            month: "Jan",
             sessions: [
               {
                 id: 1,
+                img:"https://i.kym-cdn.com/entries/icons/original/000/013/564/doge.jpg",
                 title: "Event name test 01",
                 organizer:"Its me Maerd",
                 certificate:"Yes",
                 food:"Yes",
                 signer:0,
                 maxsigner:50,
-                detail:"eiei",
-                date:"Mon, 25 May",
-                time:'9.00 - 12-00',
+                detail:"Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+                date:"Mon, 21 May",
+                time:'9.00 - 16-00',
               },
               {
                 id: 2,
+                img:"https://www.cripto-valuta.net/wp-content/uploads/2021/06/shiba-inu.jpg",
                 title: "Event name test 02",
                 organizer:"Its me Maerd",
-                certificate:"Yes",
+                certificate:"No",
                 food:"Yes",
                 signer:"20",
                 maxsigner:"40",
-                detail:"eiei",
+                detail:"Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
                 date:"Date: Mon, 25 May",
-                time:'Time: 9.00 - 12-00',
+                time:'Time: 9.00 - 10-00',
               },
               {
                 id: 3,
+                img:"https://play-lh.googleusercontent.com/kMCjIupuT3bUV-iGeWKBOPyEOwiICFwcst-r8KMLk0Udqf_dpV3tYQSQ3Sf5vndCHw",
                 title: "Event name test 03",
                 organizer:"Its me Maerd",
-                certificate:"Yes",
-                food:"Yes",
+                certificate:"No",
+                food:"No",
                 signer:"32",
                 maxsigner:"60",
-                detail:"eiei",
-                date:"Mon, 25 May",
-                time:'9.00 - 12-00',
+                detail:"Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+                date:"Mon, 26 May",
+                time:'12.00 - 15-00',
               }
             ]
           },
           {
-            month: "Mar 2022",
-            sessions:[
+            month: "Feb",
+            sessions: [
               {
-                id: 4,
-                title: "Event name test 04",
+                id: 1,
+                img:"https://i.kym-cdn.com/entries/icons/original/000/013/564/doge.jpg",
+                title: "Event name test 01",
                 organizer:"Its me Maerd",
-                certificate:true,
-                food:true,
-                signer:"32",
-                maxsigner:"50",
-                detail:"eiei",
+                certificate:"Yes",
+                food:"Yes",
+                signer:0,
+                maxsigner:50,
+                detail:"Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+                date:"Mon, 21 May",
+                time:'9.00 - 16-00',
               },
               {
-                id: 5,
-                title: "Event name test 05",
+                id: 2,
+                img:"https://www.cripto-valuta.net/wp-content/uploads/2021/06/shiba-inu.jpg",
+                title: "Event name test 02",
                 organizer:"Its me Maerd",
-                certificate:false,
-                food:true,
-                signer:"22",
-                maxsigner:"50",
-                detail:"eiei",
-              },
-              {
-                id: 6,
-                title: "Event name test 06",
-                organizer:"Its me Maerd",
-                certificate:true,
-                food:false,
-                signer:"11",
+                certificate:"No",
+                food:"Yes",
+                signer:"20",
                 maxsigner:"40",
-                detail:"eiei",
-                
-                
+                detail:"Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+                date:"Date: Mon, 25 May",
+                time:'Time: 9.00 - 10-00',
+              },
+              {
+                id: 3,
+                img:"https://play-lh.googleusercontent.com/kMCjIupuT3bUV-iGeWKBOPyEOwiICFwcst-r8KMLk0Udqf_dpV3tYQSQ3Sf5vndCHw",
+                title: "Event name test 03",
+                organizer:"Its me Maerd",
+                certificate:"No",
+                food:"No",
+                signer:"32",
+                maxsigner:"60",
+                detail:"Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+                date:"Mon, 26 May",
+                time:'12.00 - 15-00',
               }
             ]
           }
@@ -165,9 +180,9 @@ export const getters = {
     // getSurvey(state){
     //     return state.survey
     //   },
-    // getLine(state){
-    //     return state.line
-    //   }
+    getLine(state){
+        return state.line
+      }
     
 }
 
@@ -196,12 +211,12 @@ export const mutations = {
     //         ...data
     //     }
     // },
-    // SET_LINE(state, data){
-    //     state.line = {
-    //         ...state.line,
-    //         ...data
-    //     }
-    // }
+    SET_LINE(state, data){
+        state.line = {
+            ...state.line,
+            ...data
+        }
+    }
     
 }
 
@@ -218,7 +233,7 @@ export const actions = {
     // setSurvey({ commit }, data){
     //     commit('SET_SURVEY', data)
     //     },
-    // setLine({ commit }, data){
-    //     commit('SET_LINE', data)
-    //     }
+    setLine({ commit }, data){
+        commit('SET_LINE', data)
+        }
 }

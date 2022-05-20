@@ -8,11 +8,12 @@
         </v-app-bar>
         <v-container class ="pt-0 pb-0">
             <v-row>
-                <v-col cols= "12" class="pt-11 pb-0 text-center"> 
-                        <img src ="~assets/profile-img.png" alt="" width="120" height="120">
+                <v-col cols= "12" class="pt-11 pb-0 text-center profile-img"> 
+                        <img v-if="getLine.pictureUrl == ''" src="~assets/profile-img.png" alt="" width="120">
+                        <img v-else :src="getLine.pictureUrl" alt="" width="120">
                 </v-col>
                 <v-col cols= "12" class = "pt-4 pb-0 text-primary text-title text-center">          
-                        Display name
+                        {{getLine.displayName}}
                 </v-col>
                 <v-col cols= "12">
                     <v-form class ="pl-8 pr-8">
@@ -86,13 +87,18 @@
                 }
             }
         },
+        computed: {
+                getLine(){
+                        return this.$store.getters.getLine;      
+                        }
+                    },
         methods: {
             edit() {
                 this.$router.push('/register')
                 },
             register(){
                 this.$store.dispatch('setRegister', this.form)
-                this.$axios.patch(`https://event-bot-628b6-default-rtdb.firebaseio.com/members/line:0001/profile.json`, this.$store.getters.getRegister).then((res) => {
+                this.$axios.patch(`https://event-bot-628b6-default-rtdb.firebaseio.com/members/${this.$store.getters.getLine.userId}/profile.json`, this.$store.getters.getRegister).then((res) => {
                 this.$router.push('/register/done')
                 })
             }

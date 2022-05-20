@@ -1,6 +1,7 @@
 <template>
   <div>
-        <v-app-bar color =""
+        <v-app-bar color ="#83C4F3"
+        dark
         flat
         dense>
         <v-toolbar-title>Welcome</v-toolbar-title>
@@ -44,10 +45,10 @@ export default {
   },
   methods: {
     selectevent(){
-      this.$router.push('/event/selectevent')
+      this.$router.push('/event/select-event')
     },
     close(){
-      // liff.closeWindow();
+      liff.closeWindow();
     }
   }
 }

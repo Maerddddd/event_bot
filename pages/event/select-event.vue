@@ -9,11 +9,17 @@
             <v-row >
                 <v-col cols="12" >
                     <div class ="month-head">
-                        {{ list.month }}
+                      <!-- <v-select
+                        :items="items"
+                        :label= "list.month"
+                        solo
+                      ></v-select>  -->
+                      {{list.month}}
                     </div>
                     <card
                     v-for="item in list.sessions"
                     :session="item"
+                    :month="month"
                     :key="item.id"/>
                     </v-col>
             </v-row>
@@ -32,13 +38,16 @@ export default {
         index: 0,
         dialog: {
             month:'',
+            img:'',
             title:'',
             organizer:'',
             certificate:'',
             food:'',
             signer:'',
             maxsigner:'',
+            
       },
+      items: [0],
         list: [],
         event: this.$store.getters.getEvent
     }
@@ -46,11 +55,10 @@ export default {
   mounted(){
     // api
     this.list = this.event[0]
+    this.items= this.event.map((e)=> e.month)
   },
   methods: {
-    select(){
-      this.$router.push('/event/event-detail')
-    },
+
   }
 }
 </script>

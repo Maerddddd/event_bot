@@ -65,7 +65,11 @@ export default {
     //     font-size: 10px;
     //     color:#454545;
     // }
-    
+    .profile-img{
+        img{
+            border-radius: 50%;
+        }
+    }
 
 </style>
 

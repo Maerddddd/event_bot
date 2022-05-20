@@ -8,11 +8,14 @@
         </v-app-bar>
         <v-container class ="pt-0 pb-0">
             <v-row>
-                <v-col cols= "12" class="pt-11 pb-0 text-center"> 
-                        <img src ="~assets/profile-img.png" alt="" width="120" height="120">
+                <v-col cols= "12" class="pt-11 pb-0 text-center profile-img"> 
+                        <!-- <img src ="~assets/profile-img.png" alt="" width="120" height="120"> -->
+                        <img v-if="getLine.pictureUrl == ''" src="~assets/profile-img.png" alt="" width="120">
+                        <img v-else :src="getLine.pictureUrl" alt="" width="120">
+
                 </v-col>
                 <v-col cols= "12" class = "pt-4 pb-0 text-primary text-title text-center">          
-                        Display name
+                        {{getLine.displayName}}
                 </v-col>
                 <v-col cols= "12">
                     <v-form class ="pl-8 pr-8">
@@ -100,6 +103,21 @@
     const REGEX_PHONE = /^[0]([0-9]{9})*$/
     const REGEX_NUMBER = /^[0-9]*$/
     export default {
+        mounted(){
+            liff.init({
+                liffId:'1657115807-gN69lN61'
+            }).then(()=>{
+                if(liff.isLoggedIn()){
+                    console.log("Login")
+                    liff.getProfile().then(profile => {                 
+                    this.$store.dispatch('setLine', profile);
+                    this.isDone();
+                    })
+                }else{
+                    liff.login();
+                }
+            })
+        },
         data() {
             return {
                 dialog: false,
@@ -125,7 +143,19 @@
 
             }
         },
+        computed: {
+                getLine(){
+                        return this.$store.getters.getLine;      
+                        }
+                    },
         methods: {
+            isDone(){
+                this.$axios.get(`https://event-bot-628b6-default-rtdb.firebaseio.com/members/${this.$store.getters.getLine.userId}/profile.json`).then((res) => {
+                    if(res.data != null){
+                    this.$router.push('register/done');
+                    }
+                });
+                },
              phoneValidator(value){    
                 this.phoneValidated = false  
                 if(value == ''){
