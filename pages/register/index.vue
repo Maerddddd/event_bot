@@ -104,24 +104,38 @@
     const REGEX_NUMBER = /^[0-9]*$/
     export default {
         mounted(){
-            liff.init({
-                liffId:'1657115807-gN69lN61'
-            }).then(()=>{
+                liff.init({
+                liffId: '1657115807-gN69lN61'
+                }).then(() => {
                 if(liff.isLoggedIn()){
-                    console.log("Login")
-                    liff.getProfile().then(profile => {                 
+                    liff.getProfile().then(profile => {                    
                     this.$store.dispatch('setLine', profile);
                     this.isDone();
                     })
                 }else{
                     liff.login();
                 }
-            })
-        },
+                })
+            },  
+        // mounted(){
+        //     liff.init({
+        //         liffId:'1657115807-gN69lN61'
+        //     }).then(()=>{
+        //         if(liff.isLoggedIn()){
+        //             console.log("Login")
+        //             liff.getProfile().then(profile => {                 
+        //             this.$store.dispatch('setLine', profile);
+        //             this.isDone();
+        //             })
+        //         }else{
+        //             liff.login();
+        //         }
+        //     })
+        // },
         data() {
             return {
-                dialog: false,
-                errorMsg: '',
+                // dialog: false,
+                // errorMsg: '',
                 form:{
                     firstname:this.$store.getters.getRegister.firstname,
                     lastname:this.$store.getters.getRegister.lastname, 
@@ -152,7 +166,7 @@
             isDone(){
                 this.$axios.get(`https://event-bot-628b6-default-rtdb.firebaseio.com/members/${this.$store.getters.getLine.userId}/profile.json`).then((res) => {
                     if(res.data != null){
-                    this.$router.push('register/done');
+                    this.$router.push('/register/done');
                     }
                 });
                 },

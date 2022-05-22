@@ -12,7 +12,7 @@
               <v-form class ="pl-8 pr-8">
                 <div class="mt-15 mb-15 text-center">
                   <img src ="~assets/logo.png" alt="" width="203">
-                  <h1 class="text-title mt-15">Welcome,{{ name }} </h1>
+                  <h1 class="text-title mt-15">Welcome,{{getLine.displayName}} </h1>
                   <p class="text-content mt-4">
                     Welcome to the Event bot,<br/>Tons of event are waiting for you.<br/> We hope you have a good time here.
                   </p>
@@ -43,6 +43,11 @@ export default {
       name: this.$store.getters.getRegister.firstname
     }
   },
+  computed: {
+                getLine(){
+                        return this.$store.getters.getLine;      
+                        }
+                    },
   methods: {
     selectevent(){
       this.$router.push('/event/select-event')
