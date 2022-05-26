@@ -6,7 +6,6 @@
           <v-form
             class="input-form"
             ref="form"
-            v-model="valid"
             lazy-validation
           > 
             <div class ="text-title">Sign in</div>
@@ -33,7 +32,13 @@
     </v-container>
 </template>
 <script>
-
+export default {
+  methods: {
+    Signin(){
+      
+    },
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -55,7 +60,7 @@
   }
   .card-content{
     display: flex;
-    justify-content: start;
+    justify-content: flex-end;
       
   }
   .v-btn{

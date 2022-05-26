@@ -50,7 +50,7 @@ export default {
                     },
   methods: {
     selectevent(){
-      this.$router.push('/event/select-event')
+      this.$router.push('/event')
     },
     close(){
       liff.closeWindow();

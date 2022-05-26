@@ -18,8 +18,9 @@ export default {
 <style lang="scss" >
 
     .v-application{
+        width: 100%;
         font-family:'Roboto', sans-serif;
-        background-color:#F6FBFF !important;
+        background-color:white !important;
     }
     .v-application .primary{
         background-color:#83C4F3 !important;
@@ -41,9 +42,6 @@ export default {
   }
     .w-100{
         width: 100%;
-    }
-    .v-list{
-        background-color:#F6FBFF !important;
     }
     .v-btn{
         font-weight:300;

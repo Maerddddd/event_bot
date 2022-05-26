@@ -237,13 +237,13 @@
                     })
                 }
                 return validated
-            },
-            next(){
-                if(this.validate()){
-                    this.$store.dispatch('setRegister', this.form)
-                    this.$router.push('/register/registed')
-            }
-            }
+                 },
+                next(){
+                    if(this.validate()){
+                        this.$store.dispatch('setRegister', this.form)
+                        this.$router.push('/register/registed')
+                }
+                }
         }
     }
 </script>

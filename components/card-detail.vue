@@ -57,7 +57,7 @@ export default {
     methods: {
         signup(){
         //   this.$router.push('/event/event-detail')
-        this.$axios.patch(`https://event-bot-628b6-default-rtdb.firebaseio.com/events/${this.$store.getters.getLine.userId}.json`, {eventId: this.session.id}).then((res) => {
+        this.$axios.patch(`https://event-bot-628b6-default-rtdb.firebaseio.com/select_events/${this.$store.getters.getLine.userId}.json`, {eventId: this.session.id}).then((res) => {
         this.$router.push('/event/done')
             })
         },
